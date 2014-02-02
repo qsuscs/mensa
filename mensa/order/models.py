@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+class Day(models.Model):
+    date = models.DateTimeField('date')
+
+class Meal(models.Model):
+    day = models.ForeignKey(Day)
+    meal_text = models.CharFiels(max_length=200)
+    orders = models.IntegerField(default=0)
