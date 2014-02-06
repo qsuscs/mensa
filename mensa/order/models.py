@@ -5,5 +5,5 @@ class Day(models.Model):
 
 class Meal(models.Model):
     day = models.ForeignKey(Day)
-    meal_text = models.CharFiels(max_length=200)
+    meal_text = models.CharField(max_length=200)
     orders = models.IntegerField(default=0)
