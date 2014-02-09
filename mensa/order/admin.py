@@ -7,5 +7,7 @@ class MealInline(admin.TabularInline):
 
 class DayAdmin(admin.ModelAdmin):
     inlines = [MealInline]
+    list_display = ('date', 'is_from_this_week')
+    list_filter = ['date']
 
 admin.site.register(Day,DayAdmin)

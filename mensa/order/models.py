@@ -9,6 +9,9 @@ class Day(models.Model):
 
     def is_from_this_week(self):
         return self.date.strftime('%W') == timezone.now().strftime('%W') # TODO: Can be done better.
+    is_from_this_week.admin_order_field = 'date'
+    is_from_this_week.boolean = True
+    is_from_this_week.short_description = 'Is from this week?'
 
 class Meal(models.Model):
     day = models.ForeignKey(Day)
