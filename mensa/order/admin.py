@@ -1,4 +1,11 @@
 from django.contrib import admin
-from order.models import Day
+from order.models import Meal, Day
 
-admin.site.register(Day)
+class MealInline(admin.TabularInline):
+    model = Meal
+    extra = 3
+
+class DayAdmin(admin.ModelAdmin):
+    inlines = [MealInline]
+
+admin.site.register(Day,DayAdmin)
