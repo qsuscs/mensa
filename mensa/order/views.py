@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext, loader
+
+from order.models import Day
 
 def index(request):
     this_week_list = Day.objects.order_by('-date')[:5]
