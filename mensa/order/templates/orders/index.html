@@ -1,0 +1,9 @@
+{% if this_week_list %}
+    <ul>
+    {% for poll in this_week_list %}
+        <li><a href="/orders/{{ order.id }}/">{{ order.date }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No orders are available.</p>
+{% endif %}
