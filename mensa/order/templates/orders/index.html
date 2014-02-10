@@ -1,7 +1,7 @@
 {% if this_week_list %}
     <ul>
-    {% for poll in this_week_list %}
-        <li><a href="/orders/{{ order.id }}/">{{ order.date }}</a></li>
+    {% for order in this_week_list %}
+        <li><a href="/order/{{ order.id }}/">{{ order.date }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
