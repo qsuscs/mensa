@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.template import RequestContext, loader
 
 from order.models import Day
@@ -13,7 +13,11 @@ def index(request):
     return HttpResponse(template.render(context))
 
 def detail(request, day_id):
-    return HttpResponse("You're looking at Day %s." % day_id)
+    try:
+        day = Day.objects.get(pk=day_id)
+    except Day.DoesNotExist:
+        raise Http404
+    return render(request, 'orders/detail.html', {'day': day})
 
 def orders(request, day_id):
     return HttpResponse("You're looking at the order summary of Day %s." % day_id)
